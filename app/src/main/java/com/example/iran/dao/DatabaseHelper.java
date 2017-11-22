@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.iran.models.Contas;
+import com.example.iran.models.Movimento;
 import com.example.iran.models.TipoConta;
 import com.example.iran.models.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String databaseName = "controlefinanceiro.db";
-    private static final int databaseVersion = 1;
+    private static final int databaseVersion = 4;
 
     public DatabaseHelper(Context context) {
         super(context, databaseName, null, databaseVersion);
@@ -28,6 +29,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(cs, User.class);
             TableUtils.createTable(cs, Contas.class);
             TableUtils.createTable(cs, TipoConta.class);
+            TableUtils.createTable(cs, Movimento.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -39,6 +41,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(cs, User.class, true);
             TableUtils.dropTable(cs, Contas.class, true);
             TableUtils.dropTable(cs, TipoConta.class, true);
+            TableUtils.dropTable(cs, Movimento.class, true);
 
             onCreate(sd, cs);
 
